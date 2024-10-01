@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Internal Marks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9ecef;
+            margin: 0;
+            padding: 20px;
+            background-image: url('VVIT.jpeg.jpg'); 
+            background-size: 150%; 
+            background-position: center; 
+            background-repeat: no-repeat;
+            animation: zoom-in 10s infinite alternate; 
+}
+@keyframes zoom-in {
+    from {
+        background-size: 150%; /* Start at 150% */
+    }
+    to {
+        background-size: 100%; /* End at 100% */
+    }
+        }
+        h2 {
+            color: #495057;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin: 20px auto;
+            text-align: center;
+            max-width: 400px; /* Max width for form group */
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ced4da;
+            width: 100%;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .upload-btn {
+            display: none; /* Hide the button initially */
+            margin-top: 20px;
+        }
+        #fileInput {
+            display: none; /* Hide the file input initially */
+        }
+        .alert {
+            margin: 20px auto;
+            text-align: center;
+            padding: 10px;
+            color: white;
+            background-color: #28a745;
+            border-radius: 5px;
+            display: none; /* Hidden by default */
+        }
+    </style>
+</head>
+<body>
+    <h2>Upload Internal Marks</h2>
+    <div class="form-group">
+        <label for="year">Select Year:</label>
+        <select id="year">
+            <option value="">--Select Year--</option>
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="semester">Select Semester:</label>
+        <select id="semester">
+            <option value="">--Select Semester--</option>
+            <option value="1">1st Semester</option>
+            <option value="2">2nd Semester</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="branch">Select Branch:</label>
+        <select id="branch">
+            <option value="">--Select Branch--</option>
+                    <option value="cse">Computer Science and Engineering</option>
+                    <option value="it">Information Technology</option>
+                    <option value="aim">Artificial Intelligence and Machine Learning</option>
+                    <option value="aid">Artificial Intelligence and Data Science</option>
+                    <option value="cso">Internet of Things</option>
+                    <option value="cic">Cyber Security</option>
+                    <option value="ece">Electronics and Communication</option>
+                    <option value="me">Mechanical Engineering</option>
+                    <option value="ce">Civil Engineering</option>
+                    <option value="eee">Electrical & Electronic Engineering</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <button id="checkAccessBtn">Check Access</button>
+    </div>
+    <div id="uploadSection" class="form-group">
+        <button class="upload-btn" id="uploadMarksBtn">Upload Internal Marks</button>
+        <input type="file" id="fileInput" accept=".pdf,.xlsx" multiple>
+    </div>
+    <div id="alert" class="alert"></div>
+
+    <script>
+        document.getElementById('checkAccessBtn').addEventListener('click', function() {
+            const year = document.getElementById('year').value;
+            const semester = document.getElementById('semester').value;
+            const branch = document.getElementById('branch').value;
+
+            // Example validation: Check if all fields are selected
+            if (year === "" || semester === "" || branch === "") {
+                alert("Please select all options.");
+                return;
+            }
+
+            // Example access validation logic (you can replace this with real logic)
+            const hasAccess = true; // Simulating access for demonstration
+
+            if (hasAccess) {
+                // Show upload button and file input
+                document.getElementById('uploadMarksBtn').style.display = 'block';
+                document.getElementById('fileInput').style.display = 'block';
+            } else {
+                alert("You do not have access to upload internal marks.");
+            }
+        });
+
+        document.getElementById('uploadMarksBtn').addEventListener('click', function() {
+            const fileInput = document.getElementById('fileInput');
+            const alertBox = document.getElementById('alert');
+
+            if (fileInput.files.length > 0) {
+                alertBox.style.display = 'block';
+                alertBox.textContent = "Files selected for upload: " + Array.from(fileInput.files).map(file => file.name).join(", ");
+                alertBox.style.backgroundColor = "#007bff"; // Change to blue
+                // Implement actual upload functionality here (e.g., using AJAX)
+            } else {
+                alertBox.style.display = 'block';
+                alertBox.textContent = "Please select files to upload.";
+                alertBox.style.backgroundColor = "#dc3545"; // Change to red
+            }
+        });
+    </script>
+</body>
+</html>

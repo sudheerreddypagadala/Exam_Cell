@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previous Question Papers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            background-image: url('VVIT.jpeg.jpg'); 
+    background-size: 150%; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    animation: zoom-in 10s infinite alternate; 
+}
+@keyframes zoom-in {
+    from {
+        background-size: 150%; /* Start at 150% */
+    }
+    to {
+        background-size: 100%; /* End at 100% */
+    }
+        }
+        h2 {
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin: 20px auto;
+            text-align: center;
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ced4da;
+            width: 100%;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .alert {
+            margin: 20px auto;
+            text-align: center;
+            padding: 10px;
+            color: white;
+            background-color: #007bff;
+            border-radius: 5px;
+            display: none; 
+        }
+    </style>
+</head>
+<body>
+    <h2>Previous Question Papers</h2>
+    <div class="form-group">
+        <label for="year">Select Year:</label>
+        <select id="year">
+            <option value="">--Select Year--</option>
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="semester">Select Semester:</label>
+        <select id="semester">
+            <option value="">--Select Semester--</option>
+            <option value="1">1st Semester</option>
+            <option value="2">2nd Semester</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="branch">Select Branch:</label>
+        <select id="branch">
+            <option value="">--Select Branch--</option>
+            <option value="">--Select Branch--</option>
+                    <option value="cse">Computer Science and Engineering</option>
+                    <option value="it">Information Technology</option>
+                    <option value="aim">Artificial Intelligence and Machine Learning</option>
+                    <option value="aid">Artificial Intelligence and Data Science</option>
+                    <option value="cso">Internet of Things</option>
+                    <option value="cic">Cyber Security</option>
+                    <option value="ece">Electronics and Communication</option>
+                    <option value="me">Mechanical Engineering</option>
+                    <option value="ce">Civil Engineering</option>
+                    <option value="eee">Electrical & Electronic Engineering</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="examType">Select Exam Type:</label>
+        <select id="examType">
+            <option value="">--Select Exam Type--</option>
+            <option value="midterm">Midterm</option>
+            <option value="final">Final</option>
+            <option value="quiz">Quiz</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="subject">Select Subject:</label>
+        <select id="subject">
+            <option value="">--Select Subject--</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <button id="viewPapersBtn">View Papers</button>
+        <button id="viewPapersBtn">Upload Papers</button>
+    </div>
+    <div id="alert" class="alert"></div>
+
+    <script>
+        const subjectOptions = {
+            'cse': {
+                1: ['Data Structures', 'Computer Networks', 'Digital Logic'],
+                2: ['Operating Systems', 'Database Management Systems'],
+            },
+            'ece': {
+                1: ['Circuit Theory', 'Electromagnetic Fields'],
+                2: ['Signal Processing', 'Microprocessors'],
+            },
+            'me': {
+                1: ['Thermodynamics', 'Fluid Mechanics'],
+                2: ['Machine Design', 'Manufacturing Processes'],
+            },
+            'ce': {
+                1: ['Structural Analysis', 'Soil Mechanics'],
+                2: ['Transportation Engineering', 'Water Resource Engineering'],
+            }
+        };
+
+        document.getElementById('year').addEventListener('change', updateSubjects);
+        document.getElementById('semester').addEventListener('change', updateSubjects);
+        document.getElementById('branch').addEventListener('change', updateSubjects);
+
+        function updateSubjects() {
+            const branch = document.getElementById('branch').value;
+            const semester = document.getElementById('semester').value;
+            const subjectSelect = document.getElementById('subject');
+
+            subjectSelect.innerHTML = '<option value="">--Select Subject--</option>'; 
+
+            if (branch && semester) {
+                const subjects = subjectOptions[branch][semester];
+                if (subjects) {
+                    subjects.forEach(subject => {
+                        const option = document.createElement('option');
+                        option.value = subject.toLowerCase().replace(/\s+/g, '_'); 
+                        option.textContent = subject;
+                        subjectSelect.appendChild(option);
+                    });
+                }
+            }
+        }
+
+        document.getElementById('viewPapersBtn').addEventListener('click', function() {
+            const year = document.getElementById('year').value;
+            const semester = document.getElementById('semester').value;
+            const branch = document.getElementById('branch').value;
+            const examType = document.getElementById('examType').value;
+            const subject = document.getElementById('subject').value;
+
+            if (year === "" || semester === "" || branch === "" || examType === "" || subject === "") {
+                alert("Please select all options.");
+                return;
+            }
+
+            const alertBox = document.getElementById('alert');
+            alertBox.style.display = 'block';
+            alertBox.textContent = `Viewing papers for ${year}, ${semester}, ${branch}, ${examType}, ${subject}`;
+            alertBox.style.backgroundColor = "#007bff"; 
+        });
+    </script>
+</body>
+</html>

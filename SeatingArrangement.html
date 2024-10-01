@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seating Plan</title>
+    <link rel="stylesheet" href="SeatingArrangement.css">
+</head>
+<body>
+    <div class="seating-plan-container">
+        <h2>Select Seating Plan</h2>
+        <form id="seating-plan-form">
+            <div class="form-group">
+                <label for="examination-type">Select Examination Type:</label>
+                <select id="examination-type" name="examination-type" required>
+                    <option value="">--Select Examination Type--</option>
+                    <option value="Mid">Midterm</option>
+                    <option value="Sem">Final</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="year">Select Year:</label>
+                <select id="year" name="year" required>
+                    <option value="">--Select Year--</option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="branch">Select Branch:</label>
+                <select id="branch" name="branch" required>
+                    <option value="">--Select Branch--</option>
+                    <option value="cse">Computer Science and Engineering</option>
+                    <option value="it">Information Technology</option>
+                    <option value="aim">Artificial Intelligence and Machine Learning</option>
+                    <option value="aid">Artificial Intelligence and Data Science</option>
+                    <option value="cso">Internet of Things</option>
+                    <option value="cic">Cyber Security</option>
+                    <option value="ece">Electronics and Communication</option>
+                    <option value="me">Mechanical Engineering</option>
+                    <option value="ce">Civil Engineering</option>
+                    <option value="eee">Electrical & Electronic Engineering</option>  
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script src="StudentSeatingDashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            background-image: url('VVIT.jpeg.jpg'); 
+    background-size: 150%; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    animation: zoom-in 10s infinite alternate; 
+}
+@keyframes zoom-in {
+    from {
+        background-size: 150%; /* Start at 150% */
+    }
+    to {
+        background-size: 100%; /* End at 100% */
+    }
+        }
+        .dashboard-container {
+            text-align: center;
+            padding: 50px;
+        }
+        h2 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Adds space between buttons */
+        }
+        .dashboard-button {
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .dashboard-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Welcome, Faculty!</h2>
+        <div class="button-container">
+            <a href="Internal_Upload.html" class="dashboard-button">Internal Marks</a>
+            <a href="Display_Question_Papers.html" class="dashboard-button"> Previous Question Papers</a>
+            <a href="UploadQuestionPapers.html" class="dashboard-button">upload question papers</a>
+        </div>
+    </div>
+</body>
+</html>

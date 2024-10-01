@@ -1,0 +1,115 @@
+<!-- ExaminationSchedule.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examination Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('VVIT.jpeg.jpg'); 
+    background-size: 150%; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    animation: zoom-in 10s infinite alternate; 
+}
+@keyframes zoom-in {
+    from {
+        background-size: 150%; /* Start at 150% */
+    }
+    to {
+        background-size: 100%; /* End at 100% */
+    }
+        }
+        .examination-schedule-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .submit-btn {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="examination-schedule-container">
+        <h2>Select Examination Schedule</h2>
+        <form id="examination-schedule-form">
+            <div class="form-group">
+                <label for="examination-type">Select Examination Type:</label>
+                <select id="examination-type" name="examination-type" required>
+                    <option value="">--Select Examination Type--</option>
+                    <option value="Mid">Midterm</option>
+                    <option value="Sem">Final</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="year">Select Year:</label>
+                <select id="year" name="year" required>
+                    <option value="">--Select Year--</option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="branch">Select Branch:</label>
+                <select id="branch" name="branch" required>
+                    <option value="">--Select Branch--</option>
+                    <option value="cse">Computer Science and Engineering</option>
+                    <option value="it">Information Technology</option>
+                    <option value="aim">Artificial Intelligence and Machine Learning</option>
+                    <option value="aid">Artificial Intelligence and Data Science</option>
+                    <option value="cso">Internet of Things</option>
+                    <option value="cic">Cyber Security</option>
+                    <option value="ece">Electronics and Communication</option>
+                    <option value="me">Mechanical Engineering</option>
+                    <option value="ce">Civil Engineering</option>
+                    <option value="eee">Electrical & Electronic Engineering</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script src="ExaminationSchedule.js"></script>
+</body>
+</html>

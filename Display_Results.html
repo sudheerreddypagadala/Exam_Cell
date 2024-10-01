@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('VVIT.jpeg.jpg'); 
+    background-size: 150%; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    animation: zoom-in 10s infinite alternate; 
+}
+@keyframes zoom-in {
+    from {
+        background-size: 150%; 
+    }
+    to {
+        background-size: 100%; 
+    }
+
+        }
+        .results-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        .submit-btn {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="results-container">
+        <h2>View Results</h2>
+        <form id="results-form">
+            <div class="form-group">
+                <label for="year">Select Year:</label>
+                <select id="year" name="year" required>
+                    <option value="">--Select Year--</option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="semester">Select Semester:</label>
+                <select id="semester" name="semester" required>
+                    <option value="">--Select Semester--</option>
+                    <option value="1">1st Semester</option>
+                    <option value="2">2nd Semester</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="hallticket-number">Enter Hall Ticket Number:</label>
+                <input type="text" id="hallticket-number" name="hallticket-number" required>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        const validHallTicketNumbers = ['123', '456', '789'];
+
+        document.getElementById("results-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+            const hallticketNumber = document.getElementById('hallticket-number').value;
+
+            if (validHallTicketNumbers.includes(hallticketNumber)) {
+                window.open("https://image.slidesharecdn.com/hallticket-121209075647-phpapp02/85/Hall-ticket-1-320.jpg", '_blank');
+            } else {
+                alert("Invalid Hall Ticket Number.");
+            }
+        });
+    </script>
+</body>
+</html>

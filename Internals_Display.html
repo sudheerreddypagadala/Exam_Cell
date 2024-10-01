@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('VVIT.jpeg.jpg'); 
+            background-size: 150%; 
+            background-position: center; 
+            background-repeat: no-repeat;
+            animation: zoom-in 10s infinite alternate; 
+}
+@keyframes zoom-in {
+    from {
+        background-size: 150%; /* Start at 150% */
+    }
+    to {
+        background-size: 100%; /* End at 100% */
+    }
+
+        }
+        .internals-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .submit-btn {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+        .image-container {
+            margin-top: 20px;
+            display: none; /* Hide by default */
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="internals-container">
+        <h2>Select Internals</h2>
+        <form id="internals-form">
+            <div class="form-group">
+                <label for="branch">Select Branch:</label>
+                <select id="branch" name="branch" required>
+                    <option value="">--Select Branch--</option>
+                    <option value="cse">Computer Science and Engineering</option>
+                    <option value="it">Information Technology</option>
+                    <option value="aim">Artificial Intelligence and Machine Learning</option>
+                    <option value="aid">Artificial Intelligence and Data Science</option>
+                    <option value="cso">Internet of Things</option>
+                    <option value="cic">Cyber Security</option>
+                    <option value="ece">Electronics and Communication</option>
+                    <option value="me">Mechanical Engineering</option>
+                    <option value="ce">Civil Engineering</option>
+                    <option value="eee">Electrical & Electronic Engineering</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="year">Select Year:</label>
+                <select id="year" name="year" required>
+                    <option value="">--Select Year--</option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="semester">Select Semester:</label>
+                <select id="semester" name="semester" required>
+                    <option value="">--Select Semester--</option>
+                    <option value="1">1st Semester</option>
+                    <option value="2">2nd Semester</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="subject">Select Subject:</label>
+                <select id="subject" name="subject" required>
+                    <option value="">--Select Subject--</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+        <div class="image-container" id="image-container">
+            <img id="result-image" src="" alt="Internal Results">
+        </div>
+    </div>
+
+    <script>
+        const subjects = {
+            cse: {
+                1: {
+                    1: ["Introduction to Programming", "Mathematics I"],
+                    2: ["Data Structures", "Mathematics II"],
+                },
+                2: {
+                    1: ["Operating Systems", "Database Management"],
+                    2: ["Computer Networks", "Software Engineering"],
+                },
+                3: {
+                    1: ["Algorithms", "Web Development"],
+                    2: ["Machine Learning", "Theory of Computation"],
+                },
+                4: {
+                    1: ["Distributed Systems", "Artificial Intelligence"],
+                    2: ["Compiler Design", "Mobile Computing"],
+                }
+            },
+            ece: {
+                1: {
+                    1: ["Basic Electronics", "Mathematics I"],
+                    2: ["Circuit Theory", "Mathematics II"],
+                },
+                2: {
+                    1: ["Signal Processing", "Microprocessors"],
+                    2: ["Control Systems", "Communication Systems"],
+                },
+                3: {
+                    1: ["Digital Signal Processing", "VLSI Design"],
+                    2: ["Embedded Systems", "Optical Communication"],
+                },
+                4: {
+                    1: ["Wireless Communication", "Robotics"],
+                    2: ["Computer Vision", "Digital Image Processing"],
+                }
+            },
+            me: {
+                1: {
+                    1: ["Engineering Mechanics", "Mathematics I"],
+                    2: ["Thermodynamics", "Mathematics II"],
+                },
+                2: {
+                    1: ["Fluid Mechanics", "Machine Design"],
+                    2: ["Manufacturing Processes", "Heat Transfer"],
+                },
+                3: {
+                    1: ["Dynamic Systems", "Mechanical Vibrations"],
+                    2: ["Material Science", "CAD/CAM"],
+                },
+                4: {
+                    1: ["Thermal Engineering", "Finite Element Method"],
+                    2: ["Robotics", "Automobile Engineering"],
+                }
+            },
+            ce: {
+                1: {
+                    1: ["Engineering Mechanics", "Mathematics I"],
+                    2: ["Surveying", "Mathematics II"],
+                },
+                2: {
+                    1: ["Concrete Technology", "Soil Mechanics"],
+                    2: ["Fluid Mechanics", "Environmental Engineering"],
+                },
+                3: {
+                    1: ["Structural Analysis", "Transportation Engineering"],
+                    2: ["Water Resources Engineering", "Construction Management"],
+                },
+                4: {
+                    1: ["Geotechnical Engineering", "Project Management"],
+                    2: ["Earthquake Engineering", "Pavement Design"],
+                }
+            }
+        };
+
+        // Function to update the subjects based on selected branch, year, and semester
+        function updateSubjects() {
+            const branch = document.getElementById("branch").value;
+            const year = document.getElementById("year").value;
+            const semester = document.getElementById("semester").value;
+            const subjectSelect = document.getElementById("subject");
+
+            // Clear previous options
+            subjectSelect.innerHTML = '<option value="">--Select Subject--</option>';
+
+            if (branch && year && semester && subjects[branch][year][semester]) {
+                subjects[branch][year][semester].forEach(subject => {
+                    const option = document.createElement("option");
+                    option.value = subject.toLowerCase().replace(/\s+/g, '_'); // Convert to lowercase and replace spaces with underscores
+                    option.textContent = subject;
+                    subjectSelect.appendChild(option);
+                });
+            }
+        }
+
+        // Add event listeners to update subjects on branch, year, or semester change
+        document.getElementById("branch").addEventListener("change", updateSubjects);
+        document.getElementById("year").addEventListener("change", updateSubjects);
+        document.getElementById("semester").addEventListener("change", updateSubjects);
+
+        document.getElementById("internals-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get the selected values
+            const branch = document.getElementById('branch').value;
+            const year = document.getElementById('year').value;
+            const semester = document.getElementById('semester').value;
+            const subject = document.getElementById('subject').value;
+
+            // Validate the selections
+            if (branch === "" || year === "" || semester === "" || subject === "") {
+                alert("Please select all options.");
+                return;
+            }
+
+            // Display the image based on selections (example logic)
+            const imageSrc = "https://naukrinama.com/static/c1e/client/99589/uploaded/947cef271c669c581f3f7a93bd69aaa2.jpeg"; // Replace with actual image path
+            document.getElementById("result-image").src = imageSrc;
+            document.getElementById("image-container").style.display = "block"; // Show the image
+        });
+    </script>
+</body>
+</html>
